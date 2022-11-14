@@ -28,4 +28,10 @@ sealed class BottomBarScreen(
         title = "MyList",
         icon = Icons.Default.List
     )
+
+    object AddList : BottomBarScreen(
+        route = "addList",
+        title = "AddList",
+        icon = Icons.Default.Add
+    )
 }
