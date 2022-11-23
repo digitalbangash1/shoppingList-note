@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -22,46 +23,39 @@ import com.example.shoppinglist.uiComponents.PgIcon
 import com.example.shoppinglist.uiComponents.PgIconButton
 import com.example.shoppinglist.uiComponents.PgTransparentFooter
 import com.example.shoppinglist.R
-
+import com.example.shoppinglist.login.LoginViewModel
 
 @Composable
-fun Footer(
-    onAddNewListClick: () -> Unit,
-    //onAddNewGroupClick: () -> Unit,
-    modifier: Modifier = Modifier
+fun Home(
+    onNavToLoginPage:() -> Unit,
+    loginViewModel: LoginViewModel? = null,
 ) {
-    PgTransparentFooter(modifier) {
-        val shape = MaterialTheme.shapes.large
-        Surface(
-            modifier = Modifier
-                .height(48.dp)
-                .weight(1f)
-                .clip(shape)
-                .clickable(onClick = onAddNewListClick),
-            shape = shape,
-            color = Color.Transparent,
-        ) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(start = 10.dp, end = 16.dp)
-            ) {
-                PgIcon(
-                    imageVector = Icons.Rounded.Add,
-                )
-                Spacer(Modifier.width(4.dp))
-                Text(
-                    text = stringResource(R.string.todo_new_list),
-                    style = MaterialTheme.typography.body1.copy(fontWeight = FontWeight.SemiBold),
-                )
-            }
+
+    val context = LocalContext.current
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text(
+            text = "Home Screen",
+            style = MaterialTheme.typography.h3,
+            fontWeight = FontWeight.Black,
+            color = MaterialTheme.colors.primary
+        )
+        Button(onClick = { loginViewModel?.logout() ;onNavToLoginPage.invoke()}) {
+            Text(text = "Logout")
+
         }
-
-        Spacer(Modifier.width(8.dp))
-
-        /*PgIconButton(onClick = onAddNewGroupClick, color = Color.Transparent) {
-            PgIcon(imageVector = Icons.Rounded.create_new_folder)
-        }*/
     }
 }
+
+@Preview
+@Composable
+fun HomePreview() {
+    Home(onNavToLoginPage = {})
+}
+
+
+
 
 // Language: kotlin
