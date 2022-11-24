@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
 
                 setOnExitAnimationListener { splashScreenViewProvider ->
                     splashScreenViewProvider.remove()
-                }test
+                }
             }
 
             val loginViewModel = viewModel(modelClass = LoginViewModel::class.java)
@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Navigation( loginViewModel = loginViewModel)
                 }
-              // MainSreen()
+               //MainSreen()
             }
         }
     }
