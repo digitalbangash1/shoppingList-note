@@ -122,7 +122,7 @@ class MyStrogeRepository(){
 
 
 
-    fun DeleteNote(noteId: String, onComplete: (Boolean) -> Unit){
+    fun deleteNote(noteId: String, onComplete: (Boolean) -> Unit){
         notesRef.document(noteId)
             .delete()
             .addOnCompleteListener{
@@ -133,7 +133,7 @@ class MyStrogeRepository(){
 
 
 
-    fun UpdateNote(
+    fun updateNote(
         title: String,
         note:String,
         color: Int,
@@ -152,6 +152,8 @@ class MyStrogeRepository(){
                 onResult(it.isSuccessful)
             }
     }
+
+    fun signOut() = Firebase.auth.signOut()
 
 
 }

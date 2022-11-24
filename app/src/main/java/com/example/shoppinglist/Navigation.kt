@@ -8,7 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.shoppinglist.login.LoginScreen
 import com.example.shoppinglist.login.LoginViewModel
 import com.example.shoppinglist.login.SignUpScreen
-import com.example.shoppinglist.screen.Home
+import com.example.shoppinglist.screen.home.Home
 
 enum class LoginRoutes {
     Signup,

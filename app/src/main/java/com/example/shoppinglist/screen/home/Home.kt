@@ -1,21 +1,82 @@
-package com.example.shoppinglist.screen
+package com.example.shoppinglist.screen.home
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ExitToApp
+import androidx.compose.runtime.*
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.shoppinglist.login.LoginViewModel
+import com.example.shoppinglist.model.Notes
 
 @Composable
 fun Home(
-    onNavToLoginPage:() -> Unit,
-    loginViewModel: LoginViewModel? = null,
+    homeViewModel: HomeViewModel?,
+    onNoteClick: (id: String) -> Unit,
+    navToDetailPage: () -> Unit,
+    navToLoginPage: () -> Unit
+
+) {
+    val homeUiState = homeViewModel?.homeUiState ?: HomeUiState()
+
+    var openDialog by remember {
+        mutableStateOf(false)
+    }
+    var selectedNote: Notes? by remember {
+        mutableStateOf(null)
+    }
+    val scope = rememberCoroutineScope()
+    val scaffoldState = rememberScaffoldState()
+
+    Scaffold(
+        scaffoldState = scaffoldState,
+        floatingActionButton = {
+            FloatingActionButton(onClick = { navToDetailPage.invoke() }) {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = "Add"
+                )
+
+            }
+        },
+        topBar= {
+            TopAppBar(
+                navigationIcon = {},
+                actions = {
+                          IconButton(onClick = {
+                              homeViewModel?.signOut()
+                              navToLoginPage.invoke()
+                          }) {
+                              Icon(
+                                  imageVector = Icons.Default.ExitToApp,
+                                  contentDescription = null,
+                              )
+
+                          }
+
+                },
+                title={}
+            )
+        }
+
+
+    ) {
+
+    }
+
+
+}
+
+
+@Preview
+@Composable
+fun HomePreview() {
+    Home(onNavToLoginPage = {})
+}
+
+
+/*onNavToLoginPage:() -> Unit,
+loginViewModel: LoginViewModel? = null,
 ) {
 
     val context = LocalContext.current
@@ -34,15 +95,6 @@ fun Home(
 
         }
     }
-}
-
-@Preview
-@Composable
-fun HomePreview() {
-    Home(onNavToLoginPage = {})
-}
-
-
-
+}*/
 
 // Language: kotlin

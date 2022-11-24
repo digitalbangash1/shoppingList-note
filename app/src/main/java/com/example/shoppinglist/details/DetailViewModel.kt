@@ -3,7 +3,6 @@ package com.example.shoppinglist.details
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.lifecycle.ViewModel
 import com.example.shoppinglist.model.Notes
 import com.example.shoppinglist.repository.MyStrogeRepository
@@ -71,7 +70,7 @@ class DetailViewModel(
     }
 
     fun updateNote(noteId:String){
-        repository.UpdateNote(
+        repository.updateNote(
             title = detailUiState.title,
             note = detailUiState.note,
             noteId =noteId,
