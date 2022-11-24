@@ -18,7 +18,7 @@ const val NOTES_COLLECTION = "notes"
 
 class MyStrogeRepository(){
 
-    val user = Firebase.auth.currentUser
+    fun user() = Firebase.auth.currentUser
     fun hadUser():Boolean =Firebase.auth.currentUser != null
 
     fun getUserId():String =Firebase.auth.currentUser?.uid.orEmpty()

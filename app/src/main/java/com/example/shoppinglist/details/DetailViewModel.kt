@@ -21,7 +21,7 @@ class DetailViewModel(
       get()= repository.hadUser()
 
     private val user:FirebaseUser?
-        get()= repository.user
+        get()= repository.user()
 
 
     fun onColorChange(colorIndex: Int){
