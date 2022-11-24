@@ -237,7 +237,7 @@ private fun formatDate(timestamp: Timestamp): String {
 @Preview
 @Composable
 fun HomePreview() {
-    Home(homeViewModel = null, onNoteClick =, navToDetailPage = { /*TODO*/ }) {
+    Home(homeViewModel = null, onNoteClick ={}, navToDetailPage = { /*TODO*/ }) {
 
     }
 }
