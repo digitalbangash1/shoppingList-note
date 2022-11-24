@@ -13,7 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.shoppinglist.details.DetailViewModel
 import com.example.shoppinglist.login.LoginViewModel
+import com.example.shoppinglist.screen.home.HomeViewModel
 import com.example.shoppinglist.ui.theme.ShoppingListTheme
 
 class MainActivity : ComponentActivity() {
@@ -29,15 +31,22 @@ class MainActivity : ComponentActivity() {
             }
 
             val loginViewModel = viewModel(modelClass = LoginViewModel::class.java)
+            val homeViewModel = viewModel(modelClass = HomeViewModel::class.java)
+            val detailViewModel = viewModel(modelClass = DetailViewModel::class.java)
             ShoppingListTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Navigation( loginViewModel = loginViewModel)
+                    Navigation(
+                        loginViewModel = loginViewModel,
+                        detailViewModel = detailViewModel,
+                        homeViewModel = homeViewModel
+
+                    )
                 }
-              // MainSreen()
+                // MainSreen()
             }
         }
     }

@@ -10,7 +10,7 @@ import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseUser
 
 class DetailViewModel(
-    private val repository: MyStrogeRepository
+    private val repository: MyStrogeRepository = MyStrogeRepository()
 ):ViewModel() {
  var detailUiState by mutableStateOf(DetailUiState())
   private set

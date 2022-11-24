@@ -11,7 +11,7 @@ import com.example.shoppinglist.repository.Resources
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val repository: MyStrogeRepository
+    private val repository: MyStrogeRepository = MyStrogeRepository()
 ) : ViewModel() {
     var homeUiState by mutableStateOf(HomeUiState())
 
