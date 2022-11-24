@@ -1,9 +1,9 @@
+package com.example.shoppinglist.details
+
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
-
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -18,20 +18,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.shoppinglist.details.DetailUiState
-import com.example.shoppinglist.details.DetailViewModel
 import com.example.shoppinglist.ui.theme.ShoppingListTheme
 import com.example.shoppinglist.ui.theme.Utils
-import kotlinx.coroutines.launch
-
-
-
-
 
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -88,7 +80,8 @@ fun DetailScreen(
                 .padding(padding)
         ) {
             if (detailUiState.noteAddedStatus) {
-                scope.launch {
+
+                LaunchedEffect(scaffoldState.snackbarHostState) {
                     scaffoldState.snackbarHostState
                         .showSnackbar("Added Note Successfully")
                     detailViewModel?.resetNoteAdded()
@@ -97,7 +90,7 @@ fun DetailScreen(
             }
 
             if (detailUiState.noteUpdatedStatus) {
-                scope.launch {
+                LaunchedEffect(scaffoldState.snackbarHostState) {
                     scaffoldState.snackbarHostState
                         .showSnackbar("Note Updated Successfully")
                     detailViewModel?.resetNoteAdded()
@@ -172,11 +165,10 @@ fun ColorItem(
 }
 
 
-
 @Preview
 @Composable
 fun PrevDetailScreen() {
-    ShoppingListTheme{
+    ShoppingListTheme {
         DetailScreen(detailViewModel = null, noteId = "") {
 
         }
