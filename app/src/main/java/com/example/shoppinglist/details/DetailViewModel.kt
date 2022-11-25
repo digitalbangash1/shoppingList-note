@@ -17,7 +17,7 @@ class DetailViewModel(
 
 
     private val hadUser:Boolean
-      get()= repository.hadUser()
+      get()= repository.hasUser()
 
     private val user:FirebaseUser?
         get()= repository.user()

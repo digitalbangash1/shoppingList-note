@@ -1,8 +1,6 @@
 package com.example.shoppinglist.details
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.*
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -58,7 +56,7 @@ fun DetailScreen(
     Scaffold(
         scaffoldState = scaffoldState,
         floatingActionButton = {
-            AnimatedVisibility(visible = isFormsNotBlank) {
+            AnimatedVisibility(visible = isFormsNotBlank, enter= scaleIn(), exit = scaleOut() ) {
                 FloatingActionButton(
                     onClick = {
                         if (isNoteIdNotBlank) {
