@@ -236,7 +236,7 @@ fun NoteItem(
 
 
 private fun formatDate(timestamp: Timestamp): String {
-    val sdf = SimpleDateFormat("MM-dd-yy hh:mm", Locale.getDefault())
+    val sdf = SimpleDateFormat("dd-MM-yy hh:mm", Locale.getDefault())
     return sdf.format(timestamp.toDate())
 }
 
